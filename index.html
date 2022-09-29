@@ -1,1 +1,19 @@
 <p>start</p>
+
+
+<p>I decided to replace the array system for queueing and dequeueing items on the fringe along with storing their parents because 
+    I ran into issues with the parent array returning the wrong node. The issue came from the fact that in A* there is path checking and 
+    fringe popping after a solution is found, which would potentially mess up the parent array and as a result mess up the indexes of the true best path. 
+    Since nodes have multiple parents, I made it so a queue entry is stored as a collection of items: queueItemID, nodeID, parentQueueItemID, Distance, weightedDistance. 
+    The priority queue is then an ArrayList of these entries This will eliminate the issue of the wrong nodes being returned in the shortest path because 
+    the queueItems represent individual nodes in individual paths, not an individual node across all paths. QueueItem with an ID of 3 can have the same nodeID
+    as QueueItem with an ID of 18 yet will have a different parent because it’s part of a different path.
+</p>
+<p>After the entries are visited, they are popped off the queue and added to a UsedQueue ArrayList.
+     This is used to find the nodes within the shortest path at the end of the function, working back from the node connected to the goal position, 
+     since the parent values from these old items are needed to find this path.
+</p>
+<p>For the heuristic, I made the function a result of the distance the node is from the goal position. 
+    This will skew the path algorithm to choose nodes that lie closer to the goal position. 
+    I tried to make the heuristic be a function of how close the nodes were to the line between start and goal, but I couldnt get it to function correctly.
+</p>
