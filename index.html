@@ -4,9 +4,9 @@
 <a href="./src/JohnCullomCode.zip" download>Download Code Zip File</a>
 <p></p>
 <h2>Part 1</h2>
-<img height=400 width="auto" src="./images/part1Gif.gif">
-<p>I did not style part 1 at all because the entire purpose of it was to show the understanding of the algorithm and environment. I used the exact same
-    function and styled it in Part 2.
+<img height=500 width="auto" src="./images/part1Gif.gif">
+<p>The gif is very slow for some reason, the video for it is in the images folder. I did not style part 1 at all because the entire purpose of it was to show the understanding of the 
+    algorithm and environment. I used the exact same function and styled it in Part 2.
 </p>
 <p>I replaced the logic where the algorithm chooses the nodes closest to the start and goal positions with logic that allows any node available to the start and goal 
     nodes to be a possible solution. If the node can see the start or goal without an obstacle in the middle, it will be a potential starting/ending node for the best path.
@@ -31,5 +31,37 @@
 
 <p></p>
 <h2>Part 2</h2>
-<img height=400 width="auto" src="./images/part1Gif.gif">
-<p>No extra credit involved in Particle System</p>
+<img height=500 width="auto" src="./images/part2Gif.gif">
+<p>For part 2, I took the same system as in part 1 and combined it with the 3D processing example code that was posted on canvas to create
+    a pirate ship navigating through towers and wrecked ships to find a treasure chest. When it finds the treasure chest, it shoots out coins in a circular fountain 
+    formation. The ship rotates with the direction of travel. The path is 2D and moves along the y=-10 plane. To start the simulation, press the space bar. This will pause and unpause it.
+    To reset it with different obstacle and start/goal positions, press r.
+</p>
+<p>
+    For the grading and points part of the project, I did the basic 2D motion (30 points) and made it 3D with a working camera (10 points) adding in 3D models and approximating collisions
+    with raycircleintersections and circles as bounding boxes (10 points). I also added a particle system (10 points) in, using the concepts from in-class exercise 2. All of these can be seen
+    in the gif/video, as the particle system can be seen a few times and the camera moving seen toward the end of the gif/video. I also attempted to get the rotation of the boat correct When
+    it starts to find a new node to travel too, but this is sort of glitchy. I tried to fix the problem that it spins the wrong way and it turned out that the boat tweaks a little bit when it hits
+    certain angle cases. Not sure if that counts as orientation smoothing, but it made the ship look smoother.
+</p>
+
+<p>
+    I used processing for all of my code. I used the google drive on canvas to get the 3D .obj models to import and some of the code from in class exercise 2 and 5, as well as the code 
+    from part 1 to generate the path. I used the 3D modeling processing system and the camera system that were linked on canvas. 
+</p>
+<p>
+    I had many short-lived difficulties duirng the project. Getting the 3D models set up was easy and linking the path into the model movement was easy as well, but the smaller details were challenging.
+    The priorityqueue was the biggest headache when it still had the parents[] array. I was sitting in my AI class CSCI4511W and got the idea to fix it with an arraylist of queue items that 
+    allow the same nodeID to have multiple parents with multiple queueItems. Finding the correct values for the circle intersections for the 3D models was a bit tedious because the wrecked 
+    ships are such a weird shape. Getting the rotations of the 3D models to be in the correct orinetation was the second biggest problem I had. I had to play with the angles I got a little bit to keep 
+    the angle within (-360, 360) range and to make it so the ship didn't spin more than 180 degrees, or the "wrong way" to find the next node. Creating the particle system wasn't too challenging but 
+    took a decent amount of time. There were many small parts of that that made it a cumbersome addition to the project, but at no point was I lost or unsure of how to implement it.
+
+    There were a few times where I had infinite loops in my path finding algorithm as I was switching to using the new priorityQueue which would overload the memory and I had to turn my laptop on and off to
+    clear the memory and attempt to find the loop. This took me about an hour to solve.
+</p>
+<p>
+    I have the two gifs showing my project's functionality, I hope they're enough to showcase the whole thing. My project did not have any user interaction besides the r, Space Bar, and camera moving.
+    I decided not to add multiple agents because my project already uses so many arrays and arraylists to function, and I feel it would tremendously slow down and lag if I even tried to add more
+    ships and treasure chests in. There were a few times where my game would lag for seemingly no reason, but I just assumed it was processings 3D library being slow.
+</p>
