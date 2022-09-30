@@ -1,13 +1,24 @@
-<p>start</p>
+# CSCI5611-Project1
+<h1>John Cullom - cullo006 - 5550513</h1>
 
+<a href="./src/JohnCullomCode.zip" download>Download Code Zip File</a>
+<p></p>
+<h2>Part 1</h2>
+<img height=400 width="auto" src="./images/part1Gif.gif">
+<p>I did not style part 1 at all because the entire purpose of it was to show the understanding of the algorithm and environment. I used the exact same
+    function and styled it in Part 2.
+</p>
+<p>I replaced the logic where the algorithm chooses the nodes closest to the start and goal positions with logic that allows any node available to the start and goal 
+    nodes to be a possible solution. If the node can see the start or goal without an obstacle in the middle, it will be a potential starting/ending node for the best path.
 
+</p>
 <p>I decided to replace the array system for queueing and dequeueing items on the fringe along with storing their parents because 
     I ran into issues with the parent array returning the wrong node. The issue came from the fact that in A* there is path checking and 
     fringe popping after a solution is found, which would potentially mess up the parent array and as a result mess up the indexes of the true best path. 
     Since nodes have multiple parents, I made it so a queue entry is stored as a collection of items: queueItemID, nodeID, parentQueueItemID, Distance, weightedDistance. 
     The priority queue is then an ArrayList of these entries This will eliminate the issue of the wrong nodes being returned in the shortest path because 
     the queueItems represent individual nodes in individual paths, not an individual node across all paths. QueueItem with an ID of 3 can have the same nodeID
-    as QueueItem with an ID of 18 yet will have a different parent because it’s part of a different path.
+    as QueueItem with an ID of 18 yet will have a different parent because its part of a different path.
 </p>
 <p>After the entries are visited, they are popped off the queue and added to a UsedQueue ArrayList.
      This is used to find the nodes within the shortest path at the end of the function, working back from the node connected to the goal position, 
@@ -17,3 +28,8 @@
     This will skew the path algorithm to choose nodes that lie closer to the goal position. 
     I tried to make the heuristic be a function of how close the nodes were to the line between start and goal, but I couldnt get it to function correctly.
 </p>
+
+<p></p>
+<h2>Part 2</h2>
+<img height=400 width="auto" src="./images/part1Gif.gif">
+<p>No extra credit involved in Particle System</p>
